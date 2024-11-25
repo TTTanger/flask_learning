@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+    <p style="font-size: 3.75rem; text-align: center;">Hello, {{name}}！</p>
+    <div id="img" style="text-align: center;">
+        <img src="{{ url_for('static', filename='images/小埋1.png')}}" alt="小埋1.png" style="width: 25%; height: auto;">
+    </div>
+    <h2>I am Tanger. I like</h2>
+    <ul>
+      <li>Guitars</li>
+      <li>Money</li>
+      <li>Basketball</li>
+    </ul>
+    <h4>How to contact me?</h4>
+    <ul>
+      <li>QQ: 1340543463</li>
+      <li>E-Mail: tangerluo@qq.com</li>
+      <li>Address: 999 Haisi Road, East China University of Science and Technology (ECUST), Shanghai, China</li>
+    </ul>
+    <p>Looking forward to your Hola!</p>
+{% endblock %}
