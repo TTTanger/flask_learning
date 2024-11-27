@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href='static\style.css'></link> 
+    <title>
+        {% block title %}Default Title{% endblock %}
+    </title>
+</head>
+<body>
+    <header>
+        {% include "navbar.html" %}
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <!-- <p style="text-align: center;">Copyright© 2024 by Tanger</p>  -->
+        <small>
+            <p style="text-align: center;">Copyright&copy; 2024 by 
+                <a href="http://helloflask.com/book/3">Tanger</a>
+            </p>
+        </small>
+    </footer>
+</body>
+</html>

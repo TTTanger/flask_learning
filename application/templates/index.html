@@ -3,7 +3,16 @@
 {% block title %}Home Page{% endblock %}
 
 {% block content %}
-    <p style="font-size: 3.75rem; text-align: center;">Hello, {{name}}！</p>
+    <p style="font-family: 'Open Sans', sans-serif; 
+        font-size: 24px; 
+        color: #333; 
+        font-weight: 300; 
+        line-height: 1.6; 
+        letter-spacing: 1px; 
+        margin: 10;
+        text-align:center; ">
+        Hello, {{name}}！
+    </p>
     <div id="img" style="text-align: center;">
         <img src="{{ url_for('static', filename='images/小埋1.png')}}" alt="小埋1.png" style="width: 25%; height: auto;">
     </div>

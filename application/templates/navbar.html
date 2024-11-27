@@ -1,0 +1,80 @@
+<nav class="navbar">
+    <div class="navbar-container">
+        <a href="/" class="navbar-logo">
+            <img src="{{ url_for('static', filename='images/小埋3.jpeg')}}" alt="Logo">
+        </a>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="/" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="/notes" class="nav-link">Notes</a>
+            </li>
+            <li class="nav-item">
+                <a href="/album" class="nav-link">Album</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<style>
+
+    .navbar {
+        background-color: #333; /* Dark background for contrast */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        z-index: 1000; /* Ensure navbar is above other content */
+    }
+
+    .navbar-container {
+        display: flex;
+        width: 100%;
+        max-width: 1200px;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px; /* Add some padding for better spacing */
+    }
+
+    .navbar-logo {
+        font-weight: bold;
+        color: #FFA500; /* Orange color for the logo */
+        text-decoration: none;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar-logo img {
+        height: 40px; /* Adjust the height as needed */
+        width: auto; /* Maintain the aspect ratio */
+        margin-right: 10px; /* Space between image and text */
+    }
+
+    .nav-menu {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-item {
+        margin: 0 15px;
+        position: relative; /* For pseudo-elements */
+    }
+
+    .nav-link {
+        color: #FFA500; /* Orange color for links */
+        text-decoration: none;
+        padding: 10px; /* Add some padding for better click area */
+        transition: color 0.3s, background-color 0.3s;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus {
+        color: #fff; /* White color on hover */
+        background-color: #FFA500; /* Orange background on hover */
+    }
+
+</style>

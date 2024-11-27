@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form method="POST" action="/login">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #ffa500; /* Orange background */
+        background-image: linear-gradient(145deg, #ffa500, #ff4b2b); /* Gradient background */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    
+    .container {
+        background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        width: 350px;
+        max-width: 100%;
+        text-align: center;
+        align-items: center;
+        backdrop-filter: blur(10px); /* Blur effect for modern look */
+    }
+    
+    h2 {
+        color: #333;
+        margin-bottom: 30px;
+        font-weight: 600;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 8px;
+        color: #666;
+    }
+    
+    input[type="text"],
+    input[type="password"] {
+        width: 90%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 16px;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+        border-color: #ff4b2b;
+        box-shadow: 0 0 8px rgba(255, 75, 43, 0.5);
+        outline: none;
+    }
+    
+    button {
+        width: 100%;
+        padding: 15px;
+        background-color: #ff4b2b;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+    
+    button:hover {
+        background-color: #e04217;
+    }
+    
+    button:active {
+        transform: scale(0.98); /* Slight scaling for press effect */
+    }
+    
+    button:focus {
+        outline: none;
+    }
+    
+    ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 10px;
+    }
+    
+    li {
+        color: #ff4b2b;
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+</style>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>404</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Page Not Found - 404</h1>
+        <p>Oops! Something goes wrong.</p>
+        <a href="{{ url_for('home') }}" class="btn-go-back">Go Back</a>
+    </div>
+    <footer class="footer">
+        <p style="text-align: center;">Copyright&copy; 2024 by 
+            <a href="https://github.com/TTTanger">Tanger</a> 
+        </p>
+    </footer>
+</body>
+</html>
+
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #ff8800;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+    }
+    
+    .container {
+        background-color: white;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 350px;
+        max-width: 90%;
+        align-items: center;
+    }
+    
+    h1 {
+        color: #333;
+        margin-bottom: 20px;
+        font-size: 2.5em;
+    }
+    
+    p {
+        color: #666;
+        margin-bottom: 20px;
+    }
+    
+    .btn-go-back {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #5cb85c;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        text-decoration: none;
+    }
+    
+    .btn-go-back:hover {
+        background-color: #4cae4c;
+    }
+    
+    .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+    }
+    
+    .footer a {
+        color: #5cb85c;
+        text-decoration: none;
+    }
+    
+    .footer p {
+        margin: 0;
+    }
+</style>
