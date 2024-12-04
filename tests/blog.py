@@ -18,7 +18,7 @@ bp = Blueprint('blog', __name__)
 def index():
     db = get_db()
     posts = db.execute(
-        'SELECT p.id, title, body, created, author_id, username, filepath'
+        'SELECT p.id, title, body, filename, created, author_id, username'
         ' FROM post p JOIN user u ON p.author_id = u.id'
         ' ORDER BY created DESC'
     ).fetchall()
@@ -53,9 +53,9 @@ def create():
 
             db = get_db()
             db.execute(
-                'INSERT INTO post (title, body, filepath, author_id)'
+                'INSERT INTO post (title, body, filename, author_id)'
                 ' VALUES (?, ?, ?, ?)',
-                (title, body, filepath, g.user['id'])
+                (title, body, filename, g.user['id'])
             )
             db.commit()
             return redirect(url_for('blog.index'))
@@ -69,7 +69,7 @@ def allowed_file(filename):
 
 def get_post(id, check_author=True):
     post = get_db().execute(
-        'SELECT p.id, title, body, created, author_id, filepath, username'
+        'SELECT p.id, title, body, created, author_id, filename, username'
         ' FROM post p JOIN user u ON p.author_id = u.id'
         ' WHERE p.id = ?',
         (id,)
@@ -85,12 +85,7 @@ def get_post(id, check_author=True):
 
 @bp.route('/downloads/<name>')
 def download_file(name):
-
-    decoded_name = unquote(name)
-
-    secure_name = secure_filename(decoded_name)
-    # download_folder = current_app.config['UPLOAD_FOLDER']
-    return send_from_directory(secure_name, as_attachment=True)
+    return send_from_directory(current_app.config['UPLOAD_FOLDER'], name)
 
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 @login_required
