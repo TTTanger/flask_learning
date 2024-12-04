@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+  <h1 id="login-title">{% block title %}Log In{% endblock %}</h1>
+  <form method="post" class="login-form">
+    <div class="form-group" id="login-form">
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" required class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" required class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Log In</button>
+  </form>
+
+  <style>
+    .login-form {
+      max-width: 300px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 10px solid #ff9100;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box; 
+    }
+    .btn {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      background-color: #ffae00;
+      color: white;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #ff9500;
+    }
+  </style>
+{% endblock %}
+

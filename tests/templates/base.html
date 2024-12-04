@@ -1,0 +1,43 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - Flaskr</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+{% if g.user %}
+<nav>
+  <ul>
+    <li><a href="{{ url_for('blog.index') }}">Blog</a>
+    <li><a href="{{ url_for('blog.contact') }}">Contact</a>
+  </ul>
+</nav>
+<small>
+  <p>Hello<span>, {{ g.user['username'] }}!</span></p>
+  <form action="{{ url_for('auth.logout') }}" method="post">
+    <button type="submit" class="orange-btn" name="logout-button">Logout</button>
+  </form>
+</small>
+
+
+
+{% else %}
+<nav>
+  <ul>
+      <li><a href="{{ url_for('auth.register') }}">Register</a>
+      <li><a href="{{ url_for('auth.login') }}">Log In</a>
+  </ul>
+</nav>
+{% endif %}
+
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+  <footer class="footer">
+        <p style="text-align: center;">Copyright&copy; 2024 by
+            <a href="https://github.com/TTTanger">Tanger</a>
+        </p>
+    </footer>
+</section>
+

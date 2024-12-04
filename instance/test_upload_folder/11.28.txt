@@ -1,0 +1,7 @@
+Graph RAG
+1、跨领域查找
+2、近似查找
+3、图纸比较（改变点、相关信息）
+Catia: 3dxml文件、stl文件
+pythonOCC, pyqt：图纸比较
+RAG构建：https://blog.csdn.net/bagell/article/details/142817770
