@@ -6,6 +6,7 @@
   <ul>
     <li><a href="{{ url_for('blog.index') }}">Blog</a>
     <li><a href="{{ url_for('blog.contact') }}">Contact</a>
+    <li><a href="{{ url_for('docs.docs') }}">docs</a>
   </ul>
 </nav>
 <small>
@@ -14,8 +15,6 @@
     <button type="submit" class="orange-btn" name="logout-button">Logout</button>
   </form>
 </small>
-
-
 
 {% else %}
 <nav>

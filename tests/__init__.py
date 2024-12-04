@@ -43,6 +43,8 @@ def create_app(test_config=None):
     app.register_blueprint(auth.bp)
     from . import blog
     app.register_blueprint(blog.bp)
+    from . import docs
+    app.register_blueprint(docs.bp)
     app.add_url_rule('/', endpoint='index')
 
     # register 404

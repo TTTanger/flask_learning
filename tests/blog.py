@@ -126,4 +126,3 @@ def delete(id):
 @bp.route('/contact')
 def contact():
     return render_template('blog/contact.html')
-
