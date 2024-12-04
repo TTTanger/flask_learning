@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-  <form method="post" id="blog-form">
+  <form method="post" id="blog-form" enctype=multipart/form-data>
     <div class="blog-form-group">
       <label for="title">Title</label>
       <input name="title" id="title" value="{{ request.form['title'] }}" required>
@@ -13,6 +13,9 @@
     <div class="blog-form-group">
       <label for="body">Body</label>
       <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
+    </div>
+    <div class="blog-form-group">
+        <input type=file name=file class="orange-btn" value="{{ request.form['file'] }}">
     </div>
     <div class="form-actions">
       <input type="submit" value="Save">

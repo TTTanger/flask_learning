@@ -7,9 +7,11 @@ def page_not_found(e):
     return render_template('blog/notfound.html'), 404
 
 def create_app(test_config=None):
+    UPLOAD_FOLDER=os.path.join(os.getcwd(), 'instance', 'flaskr_upload_folder')
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
+        UPLOAD_FOLDER=UPLOAD_FOLDER,
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
     )
@@ -36,6 +38,8 @@ def create_app(test_config=None):
     app.register_blueprint(auth.bp)
     from . import blog
     app.register_blueprint(blog.bp)
+    from . import docs
+    app.register_blueprint(docs.bp)
     app.add_url_rule('/', endpoint='index')
 
     # register 404

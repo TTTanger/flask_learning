@@ -8,7 +8,6 @@
         <button class="orange-btn">New</button>
       </div>
     </form>
-    
   {% endif %}
 {% endblock %}
 
@@ -26,6 +25,12 @@
         {% endif %}
       </header>
       <p class="body">{{ post['body'] }}</p>
+      
+      <!-- Display file based on its type -->
+      {% if post['filename'] %}
+          <a href="{{ url_for('blog.download_file', name=post['filename']) }}">Download File</a>
+      {% endif %}
+
     </article>
     {% if not loop.last %}
       <hr>
