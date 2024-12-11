@@ -50,9 +50,9 @@ def create():
                 filename = secure_filename(file.filename)
                 filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
                 file.save(filepath)
-                
             elif file and not allowed_file(file.filename):
                 flash("The file is not allowed!")
+                return redirect(request.url)
             else:
                 filename = None
             db = get_db()
@@ -119,9 +119,9 @@ def update(id):
                 filename = secure_filename(file.filename)
                 filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
                 file.save(filepath)
-                
             elif file and not allowed_file(file.filename):
                 flash("The file is not allowed!")
+                return redirect(request.url)
             else:
                 filename = None
             db = get_db()
