@@ -30,7 +30,7 @@ def create():
     if request.method == 'POST':
         title = request.form['title']
         body = request.form['body']
-        filepath = None  # Initialize filepath as None
+        filepath = None
 
         # check if the post request has the file part
         if 'file' not in request.files:
@@ -50,7 +50,11 @@ def create():
                 filename = secure_filename(file.filename)
                 filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
                 file.save(filepath)
-
+                
+            elif file and not allowed_file(file.filename):
+                flash("The file is not allowed!")
+            else:
+                filename = None
             db = get_db()
             db.execute(
                 'INSERT INTO post (title, body, filename, author_id)'
@@ -95,19 +99,36 @@ def update(id):
     if request.method == 'POST':
         title = request.form['title']
         body = request.form['body']
+        filepath = None
+        
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        
         error = None
-
+        
         if not title:
             error = 'Title is required.'
 
         if error is not None:
             flash(error)
         else:
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
+                file.save(filepath)
+                
+            elif file and not allowed_file(file.filename):
+                flash("The file is not allowed!")
+            else:
+                filename = None
             db = get_db()
             db.execute(
-                'UPDATE post SET title = ?, body = ?'
+                'UPDATE post SET title = ?, body = ?, filename = ?'
                 ' WHERE id = ?',
-                (title, body, id)
+                (title, body, filename, id)
             )
             db.commit()
             return redirect(url_for('blog.index'))
