@@ -7,8 +7,7 @@ Used for flask learning
 
 ## 2. Execute
 ``` flask --app flaskr init-db ```    
-## to initiate the database
 
 ## 3. Execute 
 ``` flask --app flaskr run ```  
-## to start up the service.
+
