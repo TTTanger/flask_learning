@@ -1,6 +1,6 @@
 import os
 
-
+from PIL import Image
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, url_for, send_from_directory, current_app
 )
@@ -49,6 +49,13 @@ def create():
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
                 filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
+                
+                if filename.rsplit('.', 1)[1].lower() in {'png', 'jpg', 'jpeg', 'gif'}:
+                    # Compress the imgs
+                    file = Image.open(file)
+                    file = file.resize((400, 300), Image.Resampling.LANCZOS)  
+                else:
+                    pass
                 file.save(filepath)
             elif file and not allowed_file(file.filename):
                 flash("The file is not allowed!")
