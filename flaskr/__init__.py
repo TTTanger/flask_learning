@@ -7,13 +7,18 @@ def page_not_found(e):
     return render_template('blog/notfound.html'), 404
 
 def create_app(test_config=None):
-    UPLOAD_FOLDER=os.path.join(os.getcwd(), 'instance', 'flaskr_upload_folder')
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
+
+    UPLOAD_FOLDER = os.path.join(os.getcwd(), 'instance/flaskr_upload_folder')
+    if not os.path.exists(UPLOAD_FOLDER):
+        os.makedirs(UPLOAD_FOLDER)
+        print("Upload_folder is created at: ", UPLOAD_FOLDER)
+
     app.config.from_mapping(
-        UPLOAD_FOLDER=UPLOAD_FOLDER,
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
+        UPLOAD_FOLDER=UPLOAD_FOLDER,
     )
 
     if test_config is None:
@@ -38,8 +43,8 @@ def create_app(test_config=None):
     app.register_blueprint(auth.bp)
     from . import blog
     app.register_blueprint(blog.bp)
-    from . import docs
-    app.register_blueprint(docs.bp)
+    from . import docsify
+    app.register_blueprint(docsify.bp)
     app.add_url_rule('/', endpoint='index')
 
     # register 404

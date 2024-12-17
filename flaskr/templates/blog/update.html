@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-  <form method="post" id="blog-form">
+  <form method="post" id="blog-form" enctype=multipart/form-data>
     <div class="blog-form-group">
       <label for="title">Title</label>
       <input name="title" id="title"
@@ -15,9 +15,14 @@
       <label for="body">Body</label>
       <textarea name="body" id="body">{{ request.form['body'] or post['body'] }}</textarea>
     </div>
-      <div style="text-align: center;">
-        <input type="submit" value="Save">
-      </div>
+    <div class="blog-form-group">
+      <input type="file" name="file" id="file_upload" value="{{ request.files['file'] or post['filename'] }}">
+    </div>
+
+    <p> </p>
+    <div style="text-align: center;">
+      <input type="submit" value="Save">
+    </div>
   </form>
 
   <div style="text-align: center;">

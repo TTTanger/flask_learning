@@ -13,7 +13,7 @@
       <ul>
         <li><a href="{{ url_for('blog.index') }}">Blog</a>
         <li><a href="{{ url_for('blog.contact') }}">Contact</a>
-        <li><a href="{{ url_for('docs.docs') }}">Docs</a>
+        <li><a href="{{ url_for('docsify.docs') }}">Docs</a>
       </ul>
     </nav>
 
@@ -33,24 +33,3 @@
     <script src="https://unpkg.com/docsify/lib/docsify.min.js"></script>
   </body>
 </html>
-
-<style>
-  nav {
-  background: #333;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  text-align: center;
-  border-radius: 10px;
-}
-  nav ul {
-    list-style: none;
-    padding: 0;
-  }
-  nav ul li {
-    display: inline;
-    margin-right: 10px;
-  }
-  nav ul li:last-child {
-    margin-right: 0;
-  }
-</style>

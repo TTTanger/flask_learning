@@ -15,7 +15,7 @@
       <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
     </div>
     <div class="blog-form-group">
-        <input type=file name=file class="orange-btn" value="{{ request.form['file'] }}">
+        <input type="file" name="file" class="orange-btn" value="{{ request.files['file'] }}">
     </div>
     <div class="form-actions">
       <input type="submit" value="Save">

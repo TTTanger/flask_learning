@@ -48,6 +48,7 @@ def create():
         else:
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
+                print("Uploaded File:", filename)
                 filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
                 
                 if filename.rsplit('.', 1)[1].lower() in {'png', 'jpg', 'jpeg', 'gif'}:

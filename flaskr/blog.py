@@ -1,6 +1,6 @@
 import os
 
-
+from PIL import Image
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, url_for, send_from_directory, current_app
 )
@@ -8,6 +8,7 @@ from werkzeug.exceptions import abort
 from werkzeug.utils import secure_filename
 from flaskr.auth import login_required
 from flaskr.db import get_db
+from urllib.parse import unquote
 
 
 bp = Blueprint('blog', __name__)
@@ -29,7 +30,7 @@ def create():
     if request.method == 'POST':
         title = request.form['title']
         body = request.form['body']
-        filepath = None  # Initialize filepath as None
+        filepath = None
 
         # check if the post request has the file part
         if 'file' not in request.files:
@@ -47,9 +48,21 @@ def create():
         else:
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
+                print("Uploaded File:", filename)
                 filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
+                
+                if filename.rsplit('.', 1)[1].lower() in {'png', 'jpg', 'jpeg', 'gif'}:
+                    # Compress the imgs
+                    file = Image.open(file)
+                    file = file.resize((400, 300), Image.Resampling.LANCZOS)  
+                else:
+                    pass
                 file.save(filepath)
-
+            elif file and not allowed_file(file.filename):
+                flash("The file is not allowed!")
+                return redirect(request.url)
+            else:
+                filename = None
             db = get_db()
             db.execute(
                 'INSERT INTO post (title, body, filename, author_id)'
@@ -94,19 +107,36 @@ def update(id):
     if request.method == 'POST':
         title = request.form['title']
         body = request.form['body']
+        filepath = None
+        
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        
         error = None
-
+        
         if not title:
             error = 'Title is required.'
 
         if error is not None:
             flash(error)
         else:
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
+                file.save(filepath)
+            elif file and not allowed_file(file.filename):
+                flash("The file is not allowed!")
+                return redirect(request.url)
+            else:
+                filename = None
             db = get_db()
             db.execute(
-                'UPDATE post SET title = ?, body = ?'
+                'UPDATE post SET title = ?, body = ?, filename = ?'
                 ' WHERE id = ?',
-                (title, body, id)
+                (title, body, filename, id)
             )
             db.commit()
             return redirect(url_for('blog.index'))

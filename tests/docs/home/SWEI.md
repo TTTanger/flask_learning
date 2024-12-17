@@ -18,7 +18,7 @@
 - Employees
 3. Participating observation  
 
-#### Sideconditions
+#### Side-conditions
 1. Commercial
 2. Emotional
 3. Political
@@ -33,13 +33,13 @@
 3. Participating observation (become part of the system)  
 
 #### What are the challenges of Requirement engineering?
-1. Commercial Challenge  
+1. Commercial Challenge 
    ->Time of stakeholders (employees) is needed: put the needed time of the employees into contract.  
-2. Emotional challenge  
+2. Emotional challenge 
    ->People may be disturbed from whatever: get specialists.  
-3. Political challenge  
+3. Political challenge 
    ->Second agendas can be discovered by cross checking (asking colleagues).  
-4. Mental (tacit knowledge)  
+4. Mental (tacit knowledge) 
    ->Only chance is participating observation.  
 
 #### What aspects define the quality of a requirement?
@@ -75,8 +75,9 @@ Most types of the software are written in Unified Modeling Languages (UML)
 **Object: The coding itself.**  
 
 ### 4. Validation
-**Object: Check whether it meets the requirements.**
-___  
+**Object: Check whether it meets the requirements.**  
+
+___
 ## Use-case
 ***1. Name***
 ***2. Actor***
@@ -85,7 +86,7 @@ ___
 ***5. Activity***
 ***6. Postcondition*** 
 
-### How to identify a use-case?  
+### How to identify a use-case? 
 1. What is the name of the use-case?
 2. Who is the actor (can be human or technical)?
 3. Is there a precondition and a postcondition to be named?
@@ -93,55 +94,47 @@ ___
 5. What starts the whole process (trigger)?
 6. Whether there are sub use-cases under the parent use-case? 
 
-### Identifying relationships among actors and use-cases.  
+### Identifying relationships among actors and use-cases. 
 1. Drawing a use case diagram
 2. Graphical elements: SWEI-PDF 3, Page 45  
 - A stickman represents an actor
 - Bubbles represent events
 - Arrows 
 
-### Use-cases can be inclusive or extended  
+### Use-cases can be inclusive or extended 
 1. Inclusive use-cases are necessary 
 2. Extended use-cases are possible
 
-*Decorating a dish of rice: extension of cooking rice*  
+*Decorating a dish of rice: extension of cooking rice* 
 *Cutting vegetables before cooking: inclusion necessary*   
+
 ___
-
 ## ✨Use-case Diagram (PDF 4)
-
 ### 1. Dispatcher (Actor)
-### 2. FieldOfficer (Actor)
+### 2. Field Officer (Actor)
 ### 3. Use-cases  
-___  
+___
 ##  ✨ Activity Diagram (Static)
+##### 1. Decision node & Merge node 💠	(single process)  
+##### 2. Fork node & Join node ｜	(multiple process)  
+##### 3. Conditions[ ]  
+##### 4. Initial node	·  
+##### 5. Action node □   
+##### 6. Flow → (single) & ⇢ (multiple)  
 
-##### 1. Decision node & Merge node 💠	(single process)
-
-##### 2. Fork node & Join node ｜	(multiple process)
-
-##### 3. Conditions[ ]
-
-##### 4. Initial node	·
-
-##### 5. Action node □ 
-
-##### 6. Flow → (single) & ⇢ (multiple)
-
-###### Objects
-
+###### Objects 
 1. real world objects
 2. class
 3. instantiated objects
 
+### Example
+![](../assets/img/activity.png)
+
 ___
-
-## Class Diagram (Dynamic)
-
+## ✨Class Diagram (Dynamic)
 #### Multiplicity
-
-e.g.   
-1..* means 1 or more  
+e. g. 
+1..* means 1 or more 
 0..* means 0 or more  
 
 ![](../assets/img/1.png)
@@ -149,26 +142,26 @@ e.g.
 ![](../assets/img/2.png)
 
 
-#### Composite  
+#### Composite 
 Diamond node to show a strong inclusion relationship   
 
-##### What is the difference between a decision node and a merge node on the one hand and fork node with a join node on the other hand?  
-
+##### What is the difference between a decision node and a merge node on the one hand and fork node with a join node on the other hand? 
 1. The decision & merge node there is a condition
 2. Fork & join node there is no condition
 
-##### What is the difference between a decision node and a fork node not in UML?
-
+##### What is the difference between a decision node and a fork node not in UML? 
 1. Fork node works unconditionally. Results in processing.
 2. Decision node works conditionally. Only one branch after it is followed.
 
-##### What are the nodes called that get the multiple branches after a decision node or a fork node together again?
+##### What are the nodes called that get the multiple branches after a decision node or a fork node together again? 
+1. Decision node: merge node.  
+2. Fork node: join node.  
+___
+####  Example
+![](../assets/img/class.jpg)
 
-1. Decision node: merge node.
-2. Fork node: join node.
 
 ___
-
 #### Some concepts
 
 ##### Object classes
@@ -191,9 +184,7 @@ ___
 *model, view, controller*
 
 ___
-
 ## Object diagram
 
 ___
-
 ## Sequence Diagram 
