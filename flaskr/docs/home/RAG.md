@@ -50,7 +50,8 @@ In order to keep the simplicity of the scheme, the Encoder  is omitted and the q
 1. Flat
 2. Faiss
 3. Nmslib
-4. Annoy  
+4. Annoy
+
 ***These indexes use approximate nearest neighbour methods such as clustering, tree structure or HNSW algorithms.***  
 
 **Hosted Solutions**  
