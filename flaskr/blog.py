@@ -8,7 +8,7 @@ from werkzeug.exceptions import abort
 from werkzeug.utils import secure_filename
 from flaskr.auth import login_required
 from flaskr.db import get_db
-from urllib.parse import unquote
+# from urllib.parse import unquote
 
 
 bp = Blueprint('blog', __name__)
@@ -22,7 +22,36 @@ def index():
         ' FROM post p JOIN user u ON p.author_id = u.id'
         ' ORDER BY created DESC'
     ).fetchall()
-    return render_template('blog/index.html', posts=posts)
+    comments = db.execute(
+        'SELECT c.id, body, created, speaker_id, username, post_id'
+        ' FROM comment c JOIN user u ON c.speaker_id = u.id'
+        ' ORDER BY created DESC'
+    ).fetchall()
+    return render_template('blog/index.html', posts=posts, comments=comments)
+
+@bp.route('/<int:post_id>/comment', methods=('GET', 'POST'))
+@login_required
+def comment(post_id):
+    if request.method == 'POST':
+        body = request.form['comment']
+        db = get_db()
+        db.execute(
+            'INSERT INTO comment (post_id, body, speaker_id) VALUES (?, ?, ?)',
+            (post_id, body, g.user['id'])
+        )
+        db.commit()
+        return redirect(url_for('blog.index'))
+    else:
+        return redirect(url_for('blog.index'))
+    
+@bp.route('/<int:post_id>/<int:comment_id>/delete_comment', methods=('POST',))
+@login_required
+def delete_comment(post_id, comment_id):
+    if request.method == 'POST':
+        db = get_db()
+        db.execute('DELETE FROM comment WHERE id = ? AND post_id = ?', (comment_id, post_id))
+        db.commit()
+        return redirect(url_for('blog.index'))
 
 @bp.route('/create', methods=('GET', 'POST'))
 @login_required
@@ -95,9 +124,11 @@ def get_post(id, check_author=True):
 
     return post
 
+
 @bp.route('/downloads/<name>')
 def download_file(name):
     return send_from_directory(current_app.config['UPLOAD_FOLDER'], name)
+
 
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 @login_required
@@ -143,6 +174,7 @@ def update(id):
 
     return render_template('blog/update.html', post=post)
 
+
 @bp.route('/<int:id>/delete', methods=('POST',))
 @login_required
 def delete(id):
@@ -151,6 +183,7 @@ def delete(id):
     db.execute('DELETE FROM post WHERE id = ?', (id,))
     db.commit()
     return redirect(url_for('blog.index'))
+
 
 @bp.route('/contact')
 def contact():
