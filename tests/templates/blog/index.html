@@ -38,7 +38,8 @@
       <!-- Display the comments -->
       {% for comment in comments %}
         {% if comment['post_id'] == post['id'] %}
-          <p class="body">{{ comment['body'] }} by {{ comment['username'] }} on {{ comment['created'].strftime('%Y-%m-%d') }}</p>
+          <p class="body">{{ comment['body'] }}<p>
+          <i>by {{ comment['username'] }} on {{ comment['created'].strftime('%Y-%m-%d') }}</i>
           {% if g.user['id'] == comment['speaker_id'] or g.user['id'] == post['author_id'] %}
             <form action="{{ url_for('blog.delete_comment', post_id=post['id'], comment_id=comment['id']) }}" method="post">
               <input class="green-btn" type="submit" value="Delete">
