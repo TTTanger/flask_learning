@@ -3,7 +3,7 @@
 ## Basic RAG
 
 ### Structure 
-!img[]("../assets/imgs/RAG1.jpg")
+![]("../assets/imgs/RAG1.jpg")
 
 ### Code example
 ```
@@ -24,7 +24,7 @@ ___
 ## Advanced RAG
 
 ### Structure
-!img[]("../assets/imgs/RAG2.jpg")
+![]("../assets/imgs/RAG2.jpg")
 
 ### Steps
 
@@ -43,7 +43,7 @@ Use Tokenizer Model to cut paras.
 ##### Basic index retrieval (vector-stored index)
 
 ###### Structure
-!img[]("../assets/imgs/RAG3.jpg")  
+![]("../assets/imgs/RAG3.jpg")  
 In order to keep the simplicity of the scheme, the Encoder  is omitted and the query was sent directly to the index. The query has been converted to vector form before that. 
 
 ###### Methods of index
