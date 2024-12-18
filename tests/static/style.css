@@ -133,6 +133,26 @@ nav span {
   background-color: #EF6C00; 
 }
 
+input[type="submit"] {
+  background-color: #007bff; 
+  color: white;
+  border: none;
+  padding: 12px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+input[type="submit"]:active {
+  transform: translateY(1px);
+}
+
 /* Blog-form Style */
 #blog-form {
   background-color: #fff;
@@ -181,22 +201,3 @@ nav span {
   justify-content: center;
 }
 
-input[type="submit"] {
-  background-color: #007bff; 
-  color: white;
-  border: none;
-  padding: 12px 15px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-input[type="submit"]:hover {
-  background-color: #0056b3;
-}
-
-input[type="submit"]:active {
-  transform: translateY(1px);
-}

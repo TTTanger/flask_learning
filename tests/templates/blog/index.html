@@ -35,6 +35,22 @@
         {% endif %}
       {% endif %}
 
+      <!-- Display the comments -->
+      {% for comment in comments %}
+        {% if comment['post_id'] == post['id'] %}
+          <p class="body">{{ comment['body'] }} by {{ comment['username'] }} on {{ comment['created'].strftime('%Y-%m-%d') }}</p>
+          {% if g.user['id'] == comment['speaker_id'] or g.user['id'] == post['author_id'] %}
+            <form action="{{ url_for('blog.delete_comment', post_id=post['id'], comment_id=comment['id']) }}" method="post">
+              <input class="green-btn" type="submit" value="Delete">
+            </form>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      
+      <form id="comment" action="{{ url_for('blog.comment', post_id=post['id']) }}" method="post">
+        <input type="text" name="comment" value="{{ request.form['comment'] }}" placeholder="Add a comment" required>
+        <input type="submit" value="Comment">
+      </form>
     </article>
     {% if not loop.last %}
       <hr>
