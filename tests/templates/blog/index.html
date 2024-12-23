@@ -26,14 +26,16 @@
       </header>
       <p class="body">{{ post['body'] }}</p>
       
-      <!-- Display file or image preview -->
-      {% if post['filename'] %}
-        {% if post['filename'].endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp')) %}
-            <img src="{{ url_for('blog.download_file', name=post['filename']) }}" loading="lazy" alt="Image preview" style="width: 400px; height: auto">
-        {% else %}
-            <a href="{{ url_for('blog.download_file', name=post['filename']) }}">Download File</a>
+      {% for file in files %}
+        <!-- Display file or image preview -->
+        {% if file['filename'] and file['post_id'] == post['id'] %}
+          {% if file['filename'].endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp')) %}
+              <img src="{{ url_for('blog.download_file', name=file['filename']) }}" loading="lazy" alt="Image preview" style="width: 400px; height: auto">
+          {% else %}
+              <a href="{{ url_for('blog.download_file', name=file['filename']) }}">Download File</a>
+          {% endif %}
         {% endif %}
-      {% endif %}
+      {% endfor %}
 
       <!-- Display the comments -->
       {% for comment in comments %}
